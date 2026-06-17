@@ -1,394 +1,741 @@
-EcoSphere AI Commerce Platform
-An AI-powered, sustainable e-commerce platform designed as a production-ready capstone project.
+# 🌍 EcoSphere AI Commerce
 
-Status Node React License
+### AI-Powered Sustainable E-Commerce Platform
 
-🎯 Project Overview
-EcoSphere AI Commerce is a full-stack e-commerce platform that combines cutting-edge AI/ML technology with sustainable shopping. It demonstrates senior-level software engineering across multiple domains: frontend development, backend systems, cloud architecture, DevOps, and data science.
+<div align="center">
 
-Core Features
-✅ AI-Powered Shopping Assistant - ChatGPT-style interface for product recommendations ✅ Sustainability Intelligence - Carbon scores, eco-ratings, and green alternatives ✅ Smart Recommendations - Collaborative filtering + content-based algorithms ✅ Demand Forecasting - ML-based inventory and demand predictions ✅ Multi-role System - Customer, Seller, and Admin dashboards ✅ Real-time Analytics - Revenue, user growth, sustainability impact ✅ Modern UI/UX - Glassmorphism, animations, dark/light modes ✅ Production-Ready Deployment - Docker, GitHub Actions, Kubernetes-ready
+![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![React](https://img.shields.io/badge/React-19-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-AI%20Services-green)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)
+![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED)
+![AI](https://img.shields.io/badge/AI%2FML-Integrated-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-🏗️ Architecture
-Tech Stack
-Frontend:
+### 🚀 Next-Generation Intelligent Commerce Platform
 
-Next.js 15 + React 19 + TypeScript
-Tailwind CSS + Framer Motion
-Client-side state management
-Backend:
+**EcoSphere AI Commerce** is an enterprise-grade AI-powered e-commerce ecosystem that combines sustainability intelligence, explainable AI recommendations, conversational shopping, advanced analytics, demand forecasting, and modern SaaS-grade user experiences.
 
-Node.js + Express.js
-FastAPI for AI services
-PostgreSQL + Prisma ORM
+Designed as a **Final Year AI & Data Science Capstone Project** with industry-level architecture demonstrating:
+
+✅ Full Stack Engineering
+✅ Artificial Intelligence
+✅ Machine Learning Integration
+✅ Data Science Workflows
+✅ Cloud Computing
+✅ DevOps & CI/CD
+✅ Database Design
+✅ API Engineering
+✅ UI/UX Design
+✅ System Architecture
+
+---
+
+## 🎯 Project Vision
+
+Traditional e-commerce platforms help users buy products.
+
+**EcoSphere AI Commerce helps users make intelligent and sustainable purchasing decisions.**
+
+The platform leverages AI to:
+
+* Recommend products
+* Explain recommendations
+* Predict future demand
+* Analyze customer sentiment
+* Suggest eco-friendly alternatives
+* Track carbon savings
+* Improve sustainability awareness
+
+---
+
+# 🏗 System Architecture
+
+```mermaid
+flowchart TD
+
+User[👤 Users]
+
+Customer[🛒 Customer]
+Seller[🏪 Seller]
+Admin[⚙️ Admin]
+
+User --> Customer
+User --> Seller
+User --> Admin
+
+Customer --> Frontend
+Seller --> Frontend
+Admin --> Frontend
+
+Frontend["🌐 Next.js Frontend"]
+
+Frontend --> API
+
+API["🚀 Express API Gateway"]
+
+API --> Auth
+API --> Product
+API --> Order
+API --> Analytics
+API --> AI
+
+Auth["🔐 Authentication Service"]
+Product["📦 Product Service"]
+Order["🛍 Order Service"]
+Analytics["📈 Analytics Service"]
+
+AI["🤖 FastAPI AI Engine"]
+
+AI --> Recommendation
+AI --> Chatbot
+AI --> Sentiment
+AI --> Forecasting
+
+Recommendation["AI Recommendation Engine"]
+Chatbot["AI Shopping Assistant"]
+Sentiment["Review Sentiment Analysis"]
+Forecasting["Demand Forecasting"]
+
+API --> PostgreSQL
+
+PostgreSQL["🐘 PostgreSQL Database"]
+
+Analytics --> Charts["📊 Dashboards"]
+```
+
+---
+
+# 🏢 Enterprise Architecture Diagram
+
+```mermaid
+graph LR
+
+A[Client Browser]
+B[Next.js Frontend]
+
+C[Express Backend]
+
+D[FastAPI AI Services]
+
+E[(PostgreSQL)]
+
+F[Redis Cache]
+
+G[Analytics Engine]
+
+H[Docker]
+
+I[GitHub Actions]
+
+J[Vercel]
+
+K[Railway]
+
+A --> B
+
+B --> C
+
+C --> E
+
+C --> D
+
+C --> F
+
+C --> G
+
+H --> J
+H --> K
+
+I --> H
+```
+
+---
+
+# 🌟 Key Features
+
+## 🤖 AI Shopping Assistant
+
+ChatGPT-style shopping assistant.
+
+Example Questions:
+
+* Which laptop is best for AI development?
+* Suggest eco-friendly products.
+* Compare iPhone vs Samsung.
+* Recommend products under ₹5000.
+
+### AI Capabilities
+
+* Context-aware responses
+* Product comparison
+* Sustainability recommendations
+* Personalized suggestions
+* Explainable reasoning
+
+---
+
+## 🧠 Recommendation Engine
+
+### Content-Based Filtering
+
+Matches:
+
+* Categories
+* Product descriptions
+* Tags
+* User preferences
+
+### Collaborative Filtering
+
+Uses:
+
+* Similar users
+* Purchase behavior
+* Wishlist activity
+* Browsing history
+
+### Explainable AI
+
+Every recommendation contains:
+
+> Why am I seeing this recommendation?
+
+Example:
+
+"You purchased eco-friendly home products and recently viewed solar-powered devices."
+
+---
+
+## 🌱 Sustainability Intelligence
+
+Every product contains:
+
+| Metric       | Description                   |
+| ------------ | ----------------------------- |
+| Eco Score    | Sustainability rating         |
+| Carbon Score | Estimated carbon footprint    |
+| Green Badge  | Eco-certified indicator       |
+| Alternatives | Environmentally safer options |
+
+---
+
+## 📈 Demand Forecasting
+
+AI predicts:
+
+* Future demand
+* Inventory shortages
+* Seasonal trends
+* Revenue opportunities
+
+Used by:
+
+* Sellers
+* Inventory Managers
+* Platform Admins
+
+---
+
+## 😊 Sentiment Analysis
+
+Analyzes product reviews.
+
+Provides:
+
+* Positive %
+* Negative %
+* Neutral %
+* Customer Satisfaction Score
+
+---
+
+# 👨‍💻 User Roles
+
+## Customer
+
+### Features
+
+* Registration/Login
+* Browse Products
+* Search Products
+* Wishlist
+* Cart Management
+* Orders
+* AI Shopping Assistant
+* Sustainability Tracking
+
+---
+
+## Seller
+
+### Features
+
+* Product Management
+* Inventory Control
+* Revenue Analytics
+* Demand Forecasting
+* Order Management
+
+---
+
+## Admin
+
+### Features
+
+* User Management
+* Fraud Detection
+* Sustainability Monitoring
+* Platform Analytics
+* Seller Verification
+
+---
+
+# 🛠 Technology Stack
+
+## Frontend
+
+```text
+Next.js 15
+React 19
+TypeScript
+Tailwind CSS
+ShadCN UI
+Framer Motion
+Recharts
+```
+
+---
+
+## Backend
+
+```text
+Node.js
+Express.js
+REST APIs
 JWT Authentication
-DevOps & Infrastructure:
+OAuth Google Login
+```
 
-Docker + Docker Compose
-GitHub Actions CI/CD
-Vercel (Frontend deployment)
-Railway/Supabase (Backend hosting)
-Nginx reverse proxy
-AI/ML Services:
+---
 
-Anthropic Claude API for chat
-Sentiment analysis
-Collaborative filtering
-Demand forecasting
-System Design
-┌─────────────────┐         ┌──────────────────┐
-│   Frontend      │◄───────►│   Backend API    │
-│  (Next.js 15)   │         │  (Express.js)    │
-└─────────────────┘         └──────────────────┘
-                                      │
-                    ┌─────────────────┼─────────────────┐
-                    │                 │                 │
-                 ┌──▼──┐          ┌───▼────┐      ┌────▼────┐
-                 │ DB  │          │ Redis  │      │ AI API   │
-                 │ PG  │          │ Cache  │      │ Claude   │
-                 └─────┘          └────────┘      └──────────┘
-📁 Project Structure
+## AI Services
+
+```text
+FastAPI
+Scikit-Learn
+Pandas
+NumPy
+Transformers
+Sentence Embeddings
+```
+
+---
+
+## Database
+
+```text
+PostgreSQL
+Prisma ORM
+```
+
+---
+
+## DevOps
+
+```text
+Docker
+GitHub Actions
+Vercel
+Railway
+Supabase
+```
+
+---
+
+# 📂 Project Structure
+
+```text
 ecosphere-ai-commerce/
-├── frontend/                    # Next.js application
-│   ├── app/
-│   │   ├── page.tsx            # Homepage
-│   │   ├── login/              # Authentication
-│   │   ├── products/           # Product listing & details
-│   │   ├── cart/               # Shopping cart
-│   │   ├── checkout/           # Order checkout
-│   │   ├── dashboard/          # Customer dashboard
-│   │   ├── ai-assistant/       # AI chat interface
-│   │   └── globals.css         # Global styles
-│   ├── package.json
-│   ├── next.config.js
-│   └── Dockerfile
+
+├── frontend/
 │
-├── backend/                     # Express.js API
-│   ├── server.js               # Main server file
-│   ├── prisma/
-│   │   └── schema.prisma       # Database models
-│   ├── package.json
-│   ├── Dockerfile
-│   └── .env.example
+├── backend/
 │
-├── ai-services/                # Python FastAPI
-│   ├── main.py                 # AI service endpoints
-│   └── requirements.txt
+├── ai-services/
 │
-├── database/                    # Database setup
-│   └── schema.prisma           # Complete schema
+├── database/
 │
-├── docs/                        # Documentation
-│   ├── API.md                  # API documentation
-│   ├── DEPLOYMENT.md           # Deployment guide
-│   └── ARCHITECTURE.md         # Architecture details
+├── docker/
 │
-├── docker-compose.yml          # Multi-container setup
+├── docs/
+│
 ├── .github/
 │   └── workflows/
-│       └── ci-cd.yml           # GitHub Actions pipeline
 │
-└── README.md                   # This file
-🚀 Quick Start
-Prerequisites
-Node.js 20+
-PostgreSQL 16+
-Docker & Docker Compose (for containerized setup)
-Git
-Local Development Setup
-1. Clone Repository
-git clone https://github.com/yourusername/ecosphere-ai-commerce.git
-cd ecosphere-ai-commerce
-2. Backend Setup
-cd backend
-cp .env.example .env
+├── prisma/
+│
+├── scripts/
+│
+└── README.md
+```
 
-# Install dependencies
-npm install
+---
 
-# Setup database
-npx prisma db push
-npx prisma db seed
+# 📊 Database Design
 
-# Start server
-npm run dev
-# Server runs on http://localhost:5000
-3. Frontend Setup
-cd frontend
-cp .env.example .env.local
+```mermaid
+erDiagram
 
-# Install dependencies
-npm install
+USER ||--o{ ORDER : places
+USER ||--o{ REVIEW : writes
+USER ||--o{ CART : owns
+USER ||--o{ WISHLIST : owns
 
-# Start development server
-npm run dev
-# App runs on http://localhost:3000
-4. Access Application
-Frontend: http://localhost:3000
-Backend API: http://localhost:5000
-API Docs: http://localhost:5000/api/docs
-🐳 Docker Deployment
-Quick Docker Start
-# Build and run everything
-docker-compose up --build
+SELLER ||--o{ PRODUCT : creates
 
-# Access services
-Frontend: http://localhost:3000
-Backend: http://localhost:5000
-Database: localhost:5432
-Docker Compose Services
-postgres - PostgreSQL database
-backend - Express.js API
-frontend - Next.js application
-redis - Cache layer
-📊 Database Schema
-Core Models
-User
-├── id, name, email, password
-├── role (CUSTOMER | SELLER | ADMIN)
-├── orders, reviews, cart
-└── wishlist, analytics
+PRODUCT ||--o{ REVIEW : receives
 
-Product
-├── id, title, description, category
-├── price, stock, images
-├── carbonScore, ecoScore
-├── reviews, seller
-└── recommendations
+ORDER }o--|| PRODUCT : contains
+```
 
-Order
-├── id, userId, items
-├── totalAmount, status
-├── shippingAddress, paymentMethod
-└── sellerOrders
+---
 
-Review
-├── id, rating, comment
-├── sentimentScore, sentimentLabel
-├── product, user
-└── timestamp
-🔌 API Endpoints
-Authentication
-POST   /api/auth/signup         # Register user
-POST   /api/auth/login          # Login user
-GET    /api/auth/me             # Get current user
-Products
-GET    /api/products            # List products (paginated, filtered)
-GET    /api/products/:id        # Product details
-POST   /api/products            # Create product (SELLER)
-PUT    /api/products/:id        # Update product (SELLER)
-DELETE /api/products/:id        # Delete product (SELLER)
-Cart & Orders
-GET    /api/cart                # Get cart
-POST   /api/cart/add            # Add to cart
-PUT    /api/cart/:itemId        # Update quantity
-DELETE /api/cart/:itemId        # Remove item
+# 🗄 Database Models
 
-POST   /api/orders              # Create order
-GET    /api/orders              # List user orders
-GET    /api/orders/:id          # Order details
-Reviews
-POST   /api/reviews             # Create review
-GET    /api/reviews/:productId  # Product reviews + sentiment
-AI Features
-GET    /api/recommendations     # Get recommendations
-POST   /api/ai/chat             # Chat with AI assistant
-GET    /api/ai/sentiment/:productId  # Review sentiment analysis
-Analytics & Dashboards
-GET    /api/analytics/platform  # Platform analytics (ADMIN)
-GET    /api/sellers/dashboard   # Seller dashboard (SELLER)
-🤖 AI Features
-1. Shopping Assistant
-Natural language queries
-Product recommendations
-Comparison insights
-Sustainability guidance
-Example Prompts:
+## User
 
-"Which laptop is best for AI?"
-"Suggest eco-friendly products"
-"Recommend products under ₹5000"
-"Compare these two products"
-2. Smart Recommendations
-Collaborative Filtering - Based on user behavior
-Content-Based - Similar products
-Trending Products - Popular items
-Recently Viewed - User history
-3. Sentiment Analysis
-Review classification
-Positive/Negative/Neutral scores
-Customer satisfaction metrics
-4. Demand Forecasting
-Inventory predictions
-Seasonal trends
-Stock optimization
-🌱 Sustainability Features
-Each product includes:
+```sql
+id
+name
+email
+password
+role
+createdAt
+```
 
-Carbon Score (0-100) - Lifecycle carbon footprint
-Eco Score (0-100) - Overall sustainability rating
-Sustainability Badge - Certification level
-Green Alternatives - Eco-friendly substitutes
-User Impact Tracking:
+---
 
-Carbon saved (kg CO₂ equivalent)
-Trees planted (calculated)
-Sustainable choices made
-🔐 Security Features
-✅ JWT authentication with secure tokens ✅ Password hashing with bcrypt ✅ Role-based access control (RBAC) ✅ CORS protection ✅ SQL injection prevention (Prisma ORM) ✅ Rate limiting (ready for implementation) ✅ HTTPS-ready deployment
+## Product
 
-📈 Analytics & Monitoring
-Platform Analytics
-Total users, sellers, revenue
-Order metrics & trends
-Conversion & retention rates
-Sustainability impact
-User Analytics
-Spending patterns
-Order history
-Carbon savings
-Engagement metrics
-Seller Analytics
-Revenue & trends
-Inventory insights
-Sales predictions
-Rating metrics
-🧪 Testing
-Run Tests
-# Backend tests
-cd backend
-npm test
+```sql
+id
+title
+description
+price
+category
+stock
+ecoScore
+carbonScore
+sellerId
+```
 
-# Frontend tests
-cd frontend
-npm test
+---
 
-# E2E tests
-npm run test:e2e
-Test Coverage
-Unit tests for utilities & helpers
-Integration tests for APIs
-Component tests for UI
-E2E tests for critical flows
-📦 Sample Data
-Pre-seeded Data
-100+ Products across 6 categories
-20 Sellers with business details
-500+ Reviews with sentiment analysis
-Demand Forecasts for trending items
-Seed Database
-cd backend
-npx prisma db seed
-Test Credentials
-Customer:
+## Order
 
-Email: customer@example.com
-Password: password123
-Seller:
+```sql
+id
+userId
+status
+totalAmount
+createdAt
+```
 
-Email: seller@example.com
-Password: password123
-Admin:
+---
 
-Email: admin@example.com
-Password: password123
-🚢 Deployment
-Local Docker Deployment
-docker-compose up --build
-Production Deployment
-Frontend (Vercel)
-vercel deploy --prod
-Backend (Railway/Supabase)
-railway up
-Environment Variables (Production)
-Backend (.env)
+## Review
 
-DATABASE_URL=postgresql://...
-JWT_SECRET=your-random-secret-key
-NODE_ENV=production
-ANTHROPIC_API_KEY=your-key
-REDIS_URL=redis://...
-Frontend (.env.local)
+```sql
+id
+rating
+comment
+sentimentScore
+productId
+userId
+```
 
-NEXT_PUBLIC_API_URL=https://api.example.com
-GitHub Actions CI/CD
-Automatic deployment on push to main:
+---
 
-Run tests
-Build Docker images
-Push to registry
-Deploy to server
-🛠️ Environment Setup
-Create Environment Files
-# Backend
-cd backend
-cp .env.example .env
-# Update with your values
+# 🔄 Application Flow
 
-# Frontend
-cd frontend
-cp .env.example .env.local
-# Update with your API URL
-📚 API Documentation
-Full API documentation available at:
+```mermaid
+sequenceDiagram
 
-Swagger UI: /api/docs
-Postman Collection: docs/postman-collection.json
-🎓 Learning Outcomes
+participant User
+participant Frontend
+participant Backend
+participant AI
+participant DB
+
+User->>Frontend: Search Product
+
+Frontend->>Backend: API Request
+
+Backend->>DB: Fetch Products
+
+Backend->>AI: Generate Recommendations
+
+AI-->>Backend: AI Results
+
+Backend-->>Frontend: Response
+
+Frontend-->>User: Products + AI Suggestions
+```
+
+---
+
+# 🚀 API Architecture
+
+## Authentication
+
+```http
+POST /api/auth/signup
+POST /api/auth/login
+POST /api/auth/logout
+```
+
+## Products
+
+```http
+GET /api/products
+
+GET /api/products/:id
+
+POST /api/products
+
+PUT /api/products/:id
+
+DELETE /api/products/:id
+```
+
+## Orders
+
+```http
+GET /api/orders
+
+POST /api/orders
+```
+
+## AI Services
+
+```http
+POST /api/ai/chatbot
+
+POST /api/ai/recommendations
+
+POST /api/ai/sentiment
+
+POST /api/ai/forecast
+```
+
+---
+
+# 📊 Analytics Dashboard
+
+### Customer Analytics
+
+* Spending Trends
+* Orders
+* Carbon Savings
+* Personalized Recommendations
+
+### Seller Analytics
+
+* Revenue
+* Inventory Forecast
+* Conversion Rates
+
+### Admin Analytics
+
+* Total Users
+* Revenue
+* Fraud Alerts
+* Sustainability Metrics
+
+---
+
+# 🔐 Security Features
+
+### Authentication
+
+* JWT
+* OAuth Google Login
+* Role-Based Access Control
+
+### Security
+
+* Helmet
+* Rate Limiting
+* Input Validation
+* SQL Injection Prevention
+* XSS Protection
+
+---
+
+# 🐳 Docker Architecture
+
+```mermaid
+flowchart LR
+
+Frontend --> Docker
+
+Backend --> Docker
+
+AI --> Docker
+
+Database --> Docker
+
+Docker --> Production
+```
+
+---
+
+# ⚙️ CI/CD Pipeline
+
+```mermaid
+flowchart LR
+
+Developer
+
+Developer --> GitHub
+
+GitHub --> Actions
+
+Actions --> Test
+
+Test --> Build
+
+Build --> Docker
+
+Docker --> Deploy
+
+Deploy --> Vercel
+
+Deploy --> Railway
+```
+
+---
+
+# 📈 Scalability Strategy
+
+Supports:
+
+* Millions of Users
+* Horizontal Scaling
+* Containerized Services
+* Distributed AI Services
+* Cloud Native Deployment
+
+Future Enhancements:
+
+* Kubernetes
+* Kafka
+* Redis Clustering
+* Microservices Architecture
+
+---
+
+# 🎓 Learning Outcomes
+
 This project demonstrates:
 
-✅ Full-Stack Development - Frontend, Backend, DevOps integration ✅ System Design - Scalable architecture with microservices readiness ✅ Database Design - Normalized schema with proper relationships ✅ API Design - RESTful APIs with proper error handling ✅ AI/ML Integration - LLM APIs, sentiment analysis, recommendations ✅ Cloud Architecture - Docker, CI/CD, containerized deployment ✅ UI/UX Design - Modern, accessible, responsive design ✅ Authentication & Security - JWT, RBAC, secure practices ✅ Data Science - Demand forecasting, sentiment analysis ✅ DevOps - Automated testing, CI/CD pipelines, monitoring
+### Software Engineering
 
-📋 Checklist
-Development:
+* Frontend Development
+* Backend Development
+* API Design
+* Database Modeling
 
- Database schema with Prisma
- Backend API with Express
- Frontend pages with Next.js
- Authentication system
- Product management
- Shopping cart & checkout
- AI chat assistant
- Recommendations engine
- Analytics dashboards
- Sustainability tracking
-Deployment:
+### Artificial Intelligence
 
- Docker containerization
- Docker Compose setup
- GitHub Actions CI/CD
- Environment configuration
- Database migrations
- Health checks
-🤝 Contributing
-Contributions welcome! Please:
+* Recommendation Systems
+* NLP Chatbots
+* Sentiment Analysis
+* Forecasting Models
 
-Fork the repository
-Create feature branch (git checkout -b feature/amazing-feature)
-Commit changes (git commit -m 'Add amazing feature')
-Push to branch (git push origin feature/amazing-feature)
-Open Pull Request
-📄 License
-This project is licensed under MIT License - see LICENSE file for details.
+### Data Science
 
-👨‍💼 About
-EcoSphere AI Commerce is built as a final-year B.Tech capstone project with a focus on:
+* Analytics
+* Data Pipelines
+* Feature Engineering
 
-Production-grade code quality
-Recruiter-friendly portfolio showcase
-Real-world software engineering practices
-Sustainable technology impact
-📞 Support
-Need help?
+### DevOps
 
-📖 Check docs/ directory
-🐛 Open an issue on GitHub
-💬 Discussions available
-🙏 Acknowledgments
-Built with modern technologies:
+* Docker
+* CI/CD
+* Cloud Deployment
 
-Next.js & React team
-Prisma ORM
-Anthropic Claude API
-TailwindCSS community
-Built with ❤️ for sustainable e-commerce 🌱
+### System Design
+
+* Scalability
+* Reliability
+* Security
+* Observability
+
+---
+
+# 💼 Resume Highlights
+
+✔ Built enterprise-grade AI-powered e-commerce platform
+
+✔ Implemented explainable recommendation engine
+
+✔ Developed AI shopping assistant using NLP
+
+✔ Designed scalable PostgreSQL architecture
+
+✔ Created cloud-native deployment pipelines
+
+✔ Built interactive analytics dashboards
+
+✔ Integrated sustainability intelligence system
+
+✔ Applied modern software engineering principles
+
+---
+
+# 🚀 Deployment
+
+Frontend
+
+```bash
+npm run build
+vercel deploy
+```
+
+Backend
+
+```bash
+docker-compose up -d
+```
+
+AI Services
+
+```bash
+uvicorn app.main:app --reload
+```
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
+
+1. Fork Repository
+2. Create Feature Branch
+3. Commit Changes
+4. Open Pull Request
+
+---
+
+# 📜 License
+
+MIT License
+
+---
+
+## ⭐ If you found this project useful, please give it a star and support sustainable AI-driven commerce.
+
+Made with ❤️ using AI, Data Science, Cloud Computing, and Modern Software Engineering.
