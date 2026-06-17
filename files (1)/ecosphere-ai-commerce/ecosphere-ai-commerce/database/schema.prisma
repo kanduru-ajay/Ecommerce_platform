@@ -1,0 +1,265 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String     @id @default(cuid())
+  name          String
+  email         String     @unique
+  password      String
+  role          UserRole   @default(CUSTOMER)
+  avatar        String?
+  bio           String?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  
+  // Relations
+  orders        Order[]
+  reviews       Review[]
+  cart          Cart?
+  wishlist      Wishlist?
+  seller        Seller?
+  analytics     UserAnalytics?
+  recommendations Recommendation[]
+}
+
+model Seller {
+  id            String     @id @default(cuid())
+  userId        String     @unique
+  user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  businessName  String
+  businessEmail String     @unique
+  businessPhone String?
+  address       String?
+  description   String?
+  logo          String?
+  verified      Boolean    @default(false)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  
+  // Relations
+  products      Product[]
+  orders        SellerOrder[]
+  analytics     SellerAnalytics?
+}
+
+model Product {
+  id            String     @id @default(cuid())
+  title         String
+  description   String
+  category      String
+  price         Float
+  originalPrice Float?
+  stock         Int
+  sku           String     @unique
+  images        String[]
+  seller        Seller     @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  sellerId      String
+  
+  // Sustainability
+  carbonScore   Float      @default(0)
+  ecoScore      Float      @default(0)
+  sustainabilityBadge String?
+  
+  // Ratings & Reviews
+  averageRating Float      @default(0)
+  reviewCount   Int        @default(0)
+  
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  
+  // Relations
+  reviews       Review[]
+  cartItems     CartItem[]
+  wishlistItems WishlistItem[]
+  orders        OrderItem[]
+  recommendations Recommendation[]
+}
+
+model Review {
+  id            String     @id @default(cuid())
+  rating        Int
+  title         String?
+  comment       String
+  sentimentScore Float     @default(0)
+  sentimentLabel String    @default("neutral") // positive, negative, neutral
+  product       Product    @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId     String
+  user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  
+  @@unique([userId, productId])
+}
+
+model Cart {
+  id            String     @id @default(cuid())
+  user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String     @unique
+  items         CartItem[]
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model CartItem {
+  id            String     @id @default(cuid())
+  cart          Cart       @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  cartId        String
+  product       Product    @relation(fields: [productId], references: [id])
+  productId     String
+  quantity      Int
+  addedAt       DateTime   @default(now())
+  
+  @@unique([cartId, productId])
+}
+
+model Wishlist {
+  id            String     @id @default(cuid())
+  user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String     @unique
+  items         WishlistItem[]
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model WishlistItem {
+  id            String     @id @default(cuid())
+  wishlist      Wishlist   @relation(fields: [wishlistId], references: [id], onDelete: Cascade)
+  wishlistId    String
+  product       Product    @relation(fields: [productId], references: [id])
+  productId     String
+  addedAt       DateTime   @default(now())
+  
+  @@unique([wishlistId, productId])
+}
+
+model Order {
+  id            String     @id @default(cuid())
+  user          User       @relation(fields: [userId], references: [id])
+  userId        String
+  items         OrderItem[]
+  totalAmount   Float
+  status        OrderStatus @default(PENDING)
+  paymentStatus PaymentStatus @default(PENDING)
+  paymentMethod String?
+  shippingAddress String
+  trackingNumber String?
+  estimatedDelivery DateTime?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  
+  // Relations
+  sellerOrders  SellerOrder[]
+}
+
+model OrderItem {
+  id            String     @id @default(cuid())
+  order         Order      @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId       String
+  product       Product    @relation(fields: [productId], references: [id])
+  productId     String
+  quantity      Int
+  price         Float
+  createdAt     DateTime   @default(now())
+}
+
+model SellerOrder {
+  id            String     @id @default(cuid())
+  order         Order      @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId       String
+  seller        Seller     @relation(fields: [sellerId], references: [id])
+  sellerId      String
+  status        OrderStatus @default(PENDING)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model Recommendation {
+  id            String     @id @default(cuid())
+  user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String
+  product       Product    @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId     String
+  score         Float      // 0-1 relevance score
+  reason        String     // Why this recommendation
+  type          String     // collaborative, content-based, trending
+  createdAt     DateTime   @default(now())
+  
+  @@unique([userId, productId])
+}
+
+model UserAnalytics {
+  id            String     @id @default(cuid())
+  user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String     @unique
+  totalSpent    Float      @default(0)
+  orderCount    Int        @default(0)
+  lastOrderDate DateTime?
+  carbonSaved   Float      @default(0)
+  preferredCategory String?
+  engagement    Float      @default(0) // 0-100
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model SellerAnalytics {
+  id            String     @id @default(cuid())
+  seller        Seller     @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  sellerId      String     @unique
+  totalRevenue  Float      @default(0)
+  orderCount    Int        @default(0)
+  averageRating Float      @default(0)
+  productCount  Int        @default(0)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model DemandForecast {
+  id            String     @id @default(cuid())
+  category      String
+  month         String
+  predictedDemand Int
+  trend         String     // up, down, stable
+  confidence    Float
+  createdAt     DateTime   @default(now())
+}
+
+model PlatformAnalytics {
+  id            String     @id @default(cuid())
+  date          DateTime   @unique @default(now())
+  totalUsers    Int
+  totalSellers  Int
+  totalRevenue  Float
+  totalOrders   Int
+  conversionRate Float
+  retentionRate Float
+  carbonImpact  Float
+}
+
+enum UserRole {
+  CUSTOMER
+  SELLER
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
